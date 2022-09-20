@@ -1,7 +1,7 @@
 import { GetServerSideProps, NextPage } from "next"
 import Image from "next/image"
 import styles from "styles/Home.module.scss"
-//import png from "assets/images/bg.png"
+import png from "assets/images/bg.png"
 import { UAParser } from "ua-parser-js"
 import { useEffect, useState } from "react"
 
@@ -24,7 +24,7 @@ const Home: NextPage<Props> = props => {
     <div className={styles.wrapper}>
       <h1>浏览器是 {browser.name}</h1>
       <h1>窗口大小是 {width}</h1>
-      {/* <Image src={png} alt="这是一张图片" width={100} height={100} /> */}
+      <Image src={png} alt="这是一张图片" width={100} height={100} />
     </div>
   )
 }
