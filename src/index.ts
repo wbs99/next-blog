@@ -4,14 +4,15 @@ import { Post } from "./entity/Post"
 AppDataSource.initialize()
   .then(async () => {
     const posts = await AppDataSource.manager.find(Post)
-    console.log("开始")
-    console.log(posts)
-    const p = new Post()
-    p.title = "Post 1"
-    p.content = "我的第一篇文章"
-    await AppDataSource.manager.save(p)
-    const posts2 = await AppDataSource.manager.find(Post)
-    console.log("结束")
-    console.log(posts2)
+    if (posts.length === 0) {
+      await AppDataSource.manager.save(
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(number => {
+          return new Post({
+            title: `Post ${number}`,
+            content: `这是我的第${number}篇文章`,
+          })
+        })
+      )
+    }
   })
   .catch(error => console.log(error))

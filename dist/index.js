@@ -11,7 +11,7 @@ var _dataSource = require("./data-source");
 var _Post = require("./entity/Post");
 
 _dataSource.AppDataSource.initialize().then( /*#__PURE__*/(0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
-  var posts, p, posts2;
+  var posts;
   return _regenerator["default"].wrap(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
@@ -21,24 +21,21 @@ _dataSource.AppDataSource.initialize().then( /*#__PURE__*/(0, _asyncToGenerator2
 
         case 2:
           posts = _context.sent;
-          console.log("开始");
-          console.log(posts);
-          p = new _Post.Post();
-          p.title = "Post 1";
-          p.content = "我的第一篇文章";
-          _context.next = 10;
-          return _dataSource.AppDataSource.manager.save(p);
 
-        case 10:
-          _context.next = 12;
-          return _dataSource.AppDataSource.manager.find(_Post.Post);
+          if (!(posts.length === 0)) {
+            _context.next = 6;
+            break;
+          }
 
-        case 12:
-          posts2 = _context.sent;
-          console.log("结束");
-          console.log(posts2);
+          _context.next = 6;
+          return _dataSource.AppDataSource.manager.save([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(function (number) {
+            return new _Post.Post({
+              title: "Post ".concat(number),
+              content: "\u8FD9\u662F\u6211\u7684\u7B2C".concat(number, "\u7BC7\u6587\u7AE0")
+            });
+          }));
 
-        case 15:
+        case 6:
         case "end":
           return _context.stop();
       }
