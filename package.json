@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "migration:run": "typeorm-ts-node-commonjs migration:run -d src/data-source.ts",
-    "migration:revert": "typeorm-ts-node-commonjs migration:revert -d src/data-source.ts"
+    "migration:revert": "typeorm-ts-node-commonjs migration:revert -d src/data-source.ts",
+    "entity:create": "typeorm entity:create"
   },
   "dependencies": {
     "@babel/cli": "^7.18.10",
