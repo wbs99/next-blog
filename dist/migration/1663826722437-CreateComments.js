@@ -47,7 +47,7 @@ var CreateComments1663826722437 = /*#__PURE__*/function () {
                     type: "int"
                   }, {
                     name: "content",
-                    type: "int"
+                    type: "text"
                   }]
                 }));
 

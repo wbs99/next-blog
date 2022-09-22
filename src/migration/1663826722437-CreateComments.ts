@@ -23,7 +23,7 @@ export class CreateComments1663826722437 implements MigrationInterface {
           },
           {
             name: "content",
-            type: "int",
+            type: "text",
           },
         ],
       })

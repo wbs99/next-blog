@@ -27,7 +27,7 @@ var _User = require("./User");
 
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
 
-var Comment = (_dec = (0, _typeorm.Entity)(), _dec2 = (0, _typeorm.PrimaryGeneratedColumn)("increment"), _dec3 = (0, _typeorm.Column)("text"), _dec4 = (0, _typeorm.CreateDateColumn)(), _dec5 = (0, _typeorm.UpdateDateColumn)(), _dec6 = (0, _typeorm.ManyToOne)(function () {
+var Comment = (_dec = (0, _typeorm.Entity)("comments"), _dec2 = (0, _typeorm.PrimaryGeneratedColumn)("increment"), _dec3 = (0, _typeorm.Column)("text"), _dec4 = (0, _typeorm.CreateDateColumn)(), _dec5 = (0, _typeorm.UpdateDateColumn)(), _dec6 = (0, _typeorm.ManyToOne)(function () {
   return _User.User;
 }, function (user) {
   return user.comments;
@@ -35,7 +35,7 @@ var Comment = (_dec = (0, _typeorm.Entity)(), _dec2 = (0, _typeorm.PrimaryGenera
   return _Post.Post;
 }, function (post) {
   return post.comments;
-}), _dec(_class = (_class2 = /*#__PURE__*/(0, _createClass2["default"])(function Comment(id, content, user, post, createdAt, updatedAt) {
+}), _dec(_class = (_class2 = /*#__PURE__*/(0, _createClass2["default"])(function Comment() {
   (0, _classCallCheck2["default"])(this, Comment);
   (0, _initializerDefineProperty2["default"])(this, "id", _descriptor, this);
   (0, _initializerDefineProperty2["default"])(this, "content", _descriptor2, this);
@@ -43,13 +43,22 @@ var Comment = (_dec = (0, _typeorm.Entity)(), _dec2 = (0, _typeorm.PrimaryGenera
   (0, _initializerDefineProperty2["default"])(this, "updatedAt", _descriptor4, this);
   (0, _initializerDefineProperty2["default"])(this, "user", _descriptor5, this);
   (0, _initializerDefineProperty2["default"])(this, "post", _descriptor6, this);
-  this.id = id;
-  this.content = content;
-  this.user = user;
-  this.post = post;
-  this.createdAt = createdAt;
-  this.updatedAt = updatedAt;
-}), (_descriptor = (0, _applyDecoratedDescriptor2["default"])(_class2.prototype, "id", [_dec2], {
+} // constructor(
+//   id: number,
+//   content: string,
+//   user: User,
+//   post: Post,
+//   createdAt: Date,
+//   updatedAt: Date
+// ) {
+//   this.id = id
+//   this.content = content
+//   this.user = user
+//   this.post = post
+//   this.createdAt = createdAt
+//   this.updatedAt = updatedAt
+// }
+), (_descriptor = (0, _applyDecoratedDescriptor2["default"])(_class2.prototype, "id", [_dec2], {
   configurable: true,
   enumerable: true,
   writable: true,

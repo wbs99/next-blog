@@ -27,7 +27,7 @@ var _Comment = require("./Comment");
 
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
 
-var Post = (_dec = (0, _typeorm.Entity)(), _dec2 = (0, _typeorm.PrimaryGeneratedColumn)("increment"), _dec3 = (0, _typeorm.Column)("varchar"), _dec4 = (0, _typeorm.Column)("text"), _dec5 = (0, _typeorm.CreateDateColumn)(), _dec6 = (0, _typeorm.UpdateDateColumn)(), _dec7 = (0, _typeorm.ManyToOne)(function () {
+var Post = (_dec = (0, _typeorm.Entity)("posts"), _dec2 = (0, _typeorm.PrimaryGeneratedColumn)("increment"), _dec3 = (0, _typeorm.Column)("varchar"), _dec4 = (0, _typeorm.Column)("text"), _dec5 = (0, _typeorm.CreateDateColumn)(), _dec6 = (0, _typeorm.UpdateDateColumn)(), _dec7 = (0, _typeorm.ManyToOne)(function () {
   return _User.User;
 }, function (user) {
   return user.posts;
@@ -35,7 +35,7 @@ var Post = (_dec = (0, _typeorm.Entity)(), _dec2 = (0, _typeorm.PrimaryGenerated
   return _Comment.Comment;
 }, function (comment) {
   return comment.post;
-}), _dec(_class = (_class2 = /*#__PURE__*/(0, _createClass2["default"])(function Post(id, title, content, createdAt, updatedAt, author, comments) {
+}), _dec(_class = (_class2 = /*#__PURE__*/(0, _createClass2["default"])(function Post() {
   (0, _classCallCheck2["default"])(this, Post);
   (0, _initializerDefineProperty2["default"])(this, "id", _descriptor, this);
   (0, _initializerDefineProperty2["default"])(this, "title", _descriptor2, this);
@@ -44,14 +44,24 @@ var Post = (_dec = (0, _typeorm.Entity)(), _dec2 = (0, _typeorm.PrimaryGenerated
   (0, _initializerDefineProperty2["default"])(this, "updatedAt", _descriptor5, this);
   (0, _initializerDefineProperty2["default"])(this, "author", _descriptor6, this);
   (0, _initializerDefineProperty2["default"])(this, "comments", _descriptor7, this);
-  this.id = id;
-  this.title = title;
-  this.content = content;
-  this.createdAt = createdAt;
-  this.updatedAt = updatedAt;
-  this.author = author;
-  this.comments = comments;
-}), (_descriptor = (0, _applyDecoratedDescriptor2["default"])(_class2.prototype, "id", [_dec2], {
+} // constructor(
+//   id: number,
+//   title: string,
+//   content: string,
+//   createdAt: Date,
+//   updatedAt: Date,
+//   author: User,
+//   comments: Comment[]
+// ) {
+//   this.id = id
+//   this.title = title
+//   this.content = content
+//   this.createdAt = createdAt
+//   this.updatedAt = updatedAt
+//   this.author = author
+//   this.comments = comments
+// }
+), (_descriptor = (0, _applyDecoratedDescriptor2["default"])(_class2.prototype, "id", [_dec2], {
   configurable: true,
   enumerable: true,
   writable: true,

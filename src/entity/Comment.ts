@@ -9,34 +9,34 @@ import {
 import { Post } from "./Post"
 import { User } from "./User"
 
-@Entity()
+@Entity("comments")
 export class Comment {
   @PrimaryGeneratedColumn("increment")
-  id: number
+  id!: number
   @Column("text")
-  content: string
+  content!: string
   @CreateDateColumn()
-  createdAt: Date
+  createdAt!: Date
   @UpdateDateColumn()
-  updatedAt: Date
+  updatedAt!: Date
   @ManyToOne(() => User, user => user.comments)
-  user: User
+  user!: User
   @ManyToOne(() => Post, post => post.comments)
-  post: Post
+  post!: Post
 
-  constructor(
-    id: number,
-    content: string,
-    user: User,
-    post: Post,
-    createdAt: Date,
-    updatedAt: Date
-  ) {
-    this.id = id
-    this.content = content
-    this.user = user
-    this.post = post
-    this.createdAt = createdAt
-    this.updatedAt = updatedAt
-  }
+  // constructor(
+  //   id: number,
+  //   content: string,
+  //   user: User,
+  //   post: Post,
+  //   createdAt: Date,
+  //   updatedAt: Date
+  // ) {
+  //   this.id = id
+  //   this.content = content
+  //   this.user = user
+  //   this.post = post
+  //   this.createdAt = createdAt
+  //   this.updatedAt = updatedAt
+  // }
 }

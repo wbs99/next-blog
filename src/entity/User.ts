@@ -9,38 +9,38 @@ import {
 import { Post } from "./Post"
 import { Comment } from "./Comment"
 
-@Entity()
+@Entity("users")
 export class User {
   @PrimaryGeneratedColumn("increment")
-  id: number
+  id!: number
   @Column("varchar")
-  username: string
+  username!: string
   @Column("varchar")
-  passwordDigest: string
+  passwordDigest!: string
   @CreateDateColumn()
-  createdAt: Date
+  createdAt!: Date
   @UpdateDateColumn()
-  updatedAt: Date
+  updatedAt!: Date
   @OneToMany(() => Post, post => post.author) // 一个 user 可以有很多 post
-  posts: Post[]
+  posts!: Post[]
   @OneToMany(() => Comment, comment => comment.user) // 一个 user 可以有很多 post
-  comments: Comment[]
+  comments!: Comment[]
 
-  constructor(
-    id: number,
-    username: string,
-    passwordDigest: string,
-    createdAt: Date,
-    updatedAt: Date,
-    posts: Post[],
-    comments: Comment[]
-  ) {
-    this.id = id
-    this.username = username
-    this.passwordDigest = passwordDigest
-    this.createdAt = createdAt
-    this.updatedAt = updatedAt
-    this.posts = posts
-    this.comments = comments
-  }
+  // constructor(
+  //   id?: number,
+  //   username?: string,
+  //   passwordDigest?: string,
+  //   createdAt?: Date,
+  //   updatedAt?: Date,
+  //   posts?: Post[],
+  //   comments?: Comment[]
+  // ) {
+  //   this.id = id
+  //   this.username = username
+  //   this.passwordDigest = passwordDigest
+  //   this.createdAt = createdAt
+  //   this.updatedAt = updatedAt
+  //   this.posts = posts
+  //   this.comments = comments
+  // }
 }
