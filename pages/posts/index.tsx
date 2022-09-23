@@ -1,6 +1,7 @@
 import { getPosts } from "lib/posts"
 import { NextPage } from "next"
 import Link from "next/link"
+import { Post } from "src/entity/Post"
 
 type Props = {
   posts: Post[]

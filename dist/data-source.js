@@ -9,17 +9,22 @@ require("reflect-metadata");
 
 var _typeorm = require("typeorm");
 
+var _User = require("./entity/User");
+
+var _Post = require("src/entity/Post");
+
+var _Comment = require("src/entity/Comment");
+
 var AppDataSource = new _typeorm.DataSource({
   type: "postgres",
-  host: "192.168.0.105",
-  //192.168.0.105
+  host: "192.168.0.100",
   port: 5432,
   username: "blog",
   password: "",
   database: "blog_development",
   synchronize: false,
   logging: false,
-  entities: ["dist/entity/**/*.js"],
+  entities: ["dist/entity/**/*.js", _Post.Post, _User.User, _Comment.Comment],
   migrations: ["dist/migration/**/*.js"],
   subscribers: ["dist/subscriber/**/*.js"]
 });
