@@ -1,0 +1,22 @@
+// 保证 usernmae 的唯一性
+
+import { MigrationInterface, QueryRunner, TableIndex } from "typeorm"
+
+export class AddUniqueUsernameToUsers1663942073065
+  implements MigrationInterface
+{
+  public async up(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.createIndex(
+      "users",
+      new TableIndex({
+        name: "users_username",
+        columnNames: ["username"],
+        isUnique: true,
+      })
+    )
+  }
+
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropIndex("users", "users_username")
+  }
+}

@@ -6,14 +6,15 @@ import { Comment } from "src/entity/Comment"
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: "192.168.0.100",
+  host: "192.168.0.101",
   port: 5432,
   username: "blog",
   password: "",
   database: "blog_development",
   synchronize: false,
   logging: false,
-  entities: ["dist/entity/**/*.js", Post, User, Comment],
+  //entities: ["dist/entity/**/*.js"], // 运行 migration:run 或者 yarn migration:revert 的时候使用这个,
+  entities: ["dist/entity/**/*.js", Post, User, Comment], //
   migrations: ["dist/migration/**/*.js"],
   subscribers: ["dist/subscriber/**/*.js"],
 })

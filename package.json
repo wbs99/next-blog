@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "migration:create": "typeorm entity:create",
+    "migration:create": "typeorm migration:create",
     "migration:run": "typeorm migration:run -d dist/data-source.js",
     "migration:revert": "typeorm migration:revert -d dist/data-source.js",
     "entity:create": "typeorm entity:create"
