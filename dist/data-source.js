@@ -15,9 +15,13 @@ var _Post = require("src/entity/Post");
 
 var _Comment = require("src/entity/Comment");
 
+var os = require("os");
+
+var networkInterfaces = os.networkInterfaces();
+var host = networkInterfaces.WLAN.address;
 var AppDataSource = new _typeorm.DataSource({
   type: "postgres",
-  host: "192.168.0.101",
+  host: host,
   port: 5432,
   username: "blog",
   password: "",

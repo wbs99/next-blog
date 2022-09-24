@@ -4,9 +4,13 @@ import { User } from "./entity/User"
 import { Post } from "src/entity/Post"
 import { Comment } from "src/entity/Comment"
 
+const os = require("os")
+const networkInterfaces = os.networkInterfaces()
+const host = networkInterfaces.WLAN.address
+
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: "192.168.0.101",
+  host: host,
   port: 5432,
   username: "blog",
   password: "",

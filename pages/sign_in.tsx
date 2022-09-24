@@ -1,8 +1,15 @@
 import { NextPage } from "next"
 import { useCallback, useState } from "react"
 import axios, { AxiosResponse } from "axios"
+import { withIronSessionSsr } from "iron-session/next"
+import { User } from "src/entity/User"
 
-const SignUp: NextPage = () => {
+type Props = {
+  user: User
+}
+
+const SignUp: NextPage<Props> = props => {
+  const { user } = props
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -35,6 +42,7 @@ const SignUp: NextPage = () => {
   return (
     <>
       <h1>登录</h1>
+      {user && <div>当前登录用户为 ：{user.username}</div>}
       <form onSubmit={onSubmit}>
         <div>
           <label>
@@ -81,3 +89,20 @@ const SignUp: NextPage = () => {
 }
 
 export default SignUp
+
+export const getServerSideProps = withIronSessionSsr(
+  async function getServerSideProps({ req }) {
+    return {
+      props: {
+        user: req.session.user || null,
+      },
+    }
+  },
+  {
+    cookieName: "blog",
+    password: "fec2ba97-6ba0-433e-9c9d-03fbcb2585ed",
+    cookieOptions: {
+      secure: false,
+    },
+  }
+)
