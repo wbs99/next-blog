@@ -133,12 +133,14 @@ var User = (_dec = (0, _typeorm.Entity)("users"), _dec2 = (0, _typeorm.PrimaryGe
       return !!Object.values(this.errors).find(function (item) {
         return item.length > 0;
       });
-    }
+    } // 创建 user 之前，处理 password
+
   }, {
     key: "generatePasswordDigest",
     value: function generatePasswordDigest() {
       this.passwordDigest = (0, _md["default"])(this.password);
-    }
+    } // 过滤返回给前端的字段
+
   }, {
     key: "toJSON",
     value: function toJSON() {

@@ -90,11 +90,13 @@ export class User {
     return !!Object.values(this.errors).find(item => item.length > 0)
   }
 
+  // 创建 user 之前，处理 password
   @BeforeInsert()
   generatePasswordDigest() {
     this.passwordDigest = md5(this.password)
   }
 
+  // 过滤返回给前端的字段
   toJSON() {
     return _.omit(this, [
       "password",
