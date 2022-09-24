@@ -96,10 +96,11 @@ export class User {
   }
 
   toJSON() {
-    return _.omit(
-      this,
-      ["password", "passwordConfirmation", "passwordDigest"],
-      "errors"
-    )
+    return _.omit(this, [
+      "password",
+      "passwordConfirmation",
+      "passwordDigest",
+      "errors",
+    ])
   }
 }
