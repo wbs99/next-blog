@@ -10,7 +10,6 @@ AppDataSource.initialize()
     u1.username = "Jack"
     u1.passwordDigest = "123456"
     await AppDataSource.manager.save(u1)
-    console.log(u1.username)
     // 创建 post 1
     const p1 = new Post()
     p1.title = "Post 1"

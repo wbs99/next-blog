@@ -28,25 +28,24 @@ _dataSource.AppDataSource.initialize().then( /*#__PURE__*/(0, _asyncToGenerator2
           return _dataSource.AppDataSource.manager.save(u1);
 
         case 5:
-          console.log(u1.username); // 创建 post 1
-
+          // 创建 post 1
           p1 = new _Post.Post();
           p1.title = "Post 1";
           p1.content = "My First Post";
           p1.author = u1;
-          _context.next = 12;
+          _context.next = 11;
           return _dataSource.AppDataSource.manager.save(p1);
 
-        case 12:
+        case 11:
           // 创建 comment1
           c1 = new _Comment.Comment();
           c1.user = u1;
           c1.post = p1;
           c1.content = "Awesome";
-          _context.next = 18;
+          _context.next = 17;
           return _dataSource.AppDataSource.manager.save(c1);
 
-        case 18:
+        case 17:
         case "end":
           return _context.stop();
       }
