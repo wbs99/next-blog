@@ -25,9 +25,9 @@ export class User {
   createdAt!: Date
   @UpdateDateColumn()
   updatedAt!: Date
-  @OneToMany(() => Post, post => post.author) // 一个 user 可以有很多 post
+  @OneToMany("Post", "author") // 一个 user 可以有很多 post
   posts!: Post[]
-  @OneToMany(() => Comment, comment => comment.user) // 一个 user 可以有很多 post
+  @OneToMany("Comment", "user") // 一个 user 可以有很多 post
   comments!: Comment[]
 
   // constructor(

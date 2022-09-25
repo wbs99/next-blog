@@ -1,12 +1,19 @@
-import { getPosts } from "lib/posts"
+import { withIronSessionApiRoute } from "iron-session/next"
+import { getDataBaseConnection } from "lib/getDataBaseConnection"
+import { sessionOptions } from "lib/session"
 import { NextApiHandler } from "next"
+import { Post } from "src/entity/Post"
 
 const Posts: NextApiHandler = async (req, res) => {
-  const posts = await getPosts()
-  res.statusCode = 200
-  res.setHeader("Content-Type", "application/json")
-  res.write(JSON.stringify(posts))
-  res.end()
+  const { title, content } = req.body
+  const post = new Post()
+  post.title = title
+  post.content = content
+  const user = req.session.user
+  post.author = user!
+  const connection = await getDataBaseConnection()
+  await connection.manager.save(post)
+  res.json(post)
 }
 
-export default Posts
+export default withIronSessionApiRoute(Posts, sessionOptions)

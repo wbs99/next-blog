@@ -22,9 +22,9 @@ export class Post {
   createdAt!: Date
   @UpdateDateColumn()
   updatedAt!: Date
-  @ManyToOne(() => User, user => user.posts)
+  @ManyToOne("User", "posts")
   author!: User
-  @OneToMany(() => Comment, comment => comment.post) // 一个 user 可以有很多 post
+  @OneToMany("Comment", "post") // 一个 user 可以有很多 post
   comments!: Comment[]
 
   // constructor(
