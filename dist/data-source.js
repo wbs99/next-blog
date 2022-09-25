@@ -30,7 +30,6 @@ var AppDataSource = new _typeorm.DataSource({
   logging: false,
   //entities: ["dist/entity/**/*.js"], // 运行 migration:run 或者 yarn migration:revert 的时候使用这个,
   entities: ["dist/entity/**/*.js", _Post.Post, _User.User, _Comment.Comment],
-  //
   migrations: ["dist/migration/**/*.js"],
   subscribers: ["dist/subscriber/**/*.js"]
 });

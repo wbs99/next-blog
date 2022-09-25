@@ -3,22 +3,21 @@ import { useCallback, useState } from "react"
 import axios, { AxiosResponse } from "axios"
 import { withIronSessionSsr } from "iron-session/next"
 import { User } from "src/entity/User"
+import { Form } from "components/Form"
 
 type Props = {
   user: User
 }
 
-const SignUp: NextPage<Props> = props => {
+const SignIn: NextPage<Props> = props => {
   const { user } = props
   const [formData, setFormData] = useState({
     username: "",
     password: "",
-    passwordConfirmation: "",
   })
   const [errors, setErrors] = useState({
     username: [],
     password: [],
-    passwordConfirmation: [],
   })
   const onSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
@@ -39,56 +38,47 @@ const SignUp: NextPage<Props> = props => {
     },
     [formData]
   )
+
+  const onChange = useCallback(
+    (key: string, value: string) => {
+      setFormData({ ...formData, [key]: value })
+    },
+    [formData]
+  )
+
   return (
     <>
+      {props.user && <div>当前登录用户为 {props.user.username}</div>}
       <h1>登录</h1>
-      {user && <div>当前登录用户为 ：{user.username}</div>}
-      <form onSubmit={onSubmit}>
-        <div>
-          <label>
-            用户名
-            <input
-              type="text"
-              value={formData.username}
-              onChange={e =>
-                setFormData({
-                  ...formData,
-                  username: e.target.value,
-                })
-              }
-            />
-          </label>
-          {errors.username?.length > 0 && (
-            <div>{errors.username.join(",")}</div>
-          )}
-        </div>
-        <div>
-          <label>
-            密码
-            <input
-              type="password"
-              value={formData.password}
-              onChange={e =>
-                setFormData({
-                  ...formData,
-                  password: e.target.value,
-                })
-              }
-            />
-          </label>
-          {errors.password?.length > 0 && (
-            <div>{errors.password.join(",")}</div>
-          )}
-        </div>
-        <div>
-          <button type="submit">登录</button>
-        </div>
-      </form>
+      <Form
+        fields={[
+          {
+            label: "用户名",
+            type: "text",
+            value: formData.username,
+            onChange: e => onChange("username", e.target.value),
+            errors: errors.username,
+          },
+          {
+            label: "密码",
+            type: "password",
+            value: formData.password,
+            onChange: e => onChange("password", e.target.value),
+            errors: errors.password,
+          },
+        ]}
+        onSubmit={onSubmit}
+        buttons={
+          <>
+            <button type="submit">登录</button>
+          </>
+        }
+      />
     </>
   )
 }
 
-export default SignUp
+export default SignIn
 
 export const getServerSideProps = withIronSessionSsr(
   async function getServerSideProps({ req }) {

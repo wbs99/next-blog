@@ -1,10 +1,7 @@
 import type { IronSessionOptions } from "iron-session"
 import { User } from "src/entity/User"
 
-console.log("process.env.SECRET")
-console.log(process.env.SECRET)
 export const sessionOptions: IronSessionOptions = {
-  // password: process.env.SECRET_COOKIE_PASSWORD as string,
   password: "fec2ba97-6ba0-433e-9c9d-03fbcb2585ed",
   cookieName: "blog",
   cookieOptions: {

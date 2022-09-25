@@ -18,7 +18,7 @@ export const AppDataSource = new DataSource({
   synchronize: false,
   logging: false,
   //entities: ["dist/entity/**/*.js"], // 运行 migration:run 或者 yarn migration:revert 的时候使用这个,
-  entities: ["dist/entity/**/*.js", Post, User, Comment], //
+  entities: ["dist/entity/**/*.js", Post, User, Comment],
   migrations: ["dist/migration/**/*.js"],
   subscribers: ["dist/subscriber/**/*.js"],
 })
