@@ -7,7 +7,7 @@ AppDataSource.initialize()
   .then(async () => {
     // 创建 user1
     const u1 = new User()
-    u1.username = "Jack"
+    u1.username = "Jack22"
     u1.passwordDigest = "123456"
     await AppDataSource.manager.save(u1)
     // 创建 post 1

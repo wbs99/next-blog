@@ -22,7 +22,7 @@ _dataSource.AppDataSource.initialize().then( /*#__PURE__*/(0, _asyncToGenerator2
         case 0:
           // 创建 user1
           u1 = new _User.User();
-          u1.username = "Jack";
+          u1.username = "Jack22";
           u1.passwordDigest = "123456";
           _context.next = 5;
           return _dataSource.AppDataSource.manager.save(u1);

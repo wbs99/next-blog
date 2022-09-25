@@ -49,6 +49,7 @@ export class User {
   // }
 
   // 下面不是数据库中的字段，只是 User 类上的属性
+  // yarn migration:run 注释下面代码
   errors = {
     username: [] as string[],
     password: [] as string[],

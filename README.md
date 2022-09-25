@@ -57,3 +57,15 @@ node dist/index.js
 ```
 yarn dev
 ```
+
+## 常见报错
+
+- no connection
+  解决方式：
+
+```
+1. 注释 src\data-source.ts 和 src\entity\User.ts 中的部分代码
+2. yarn dev
+3. yarn migration:run
+4. 打开刚才注释的代码
+```
