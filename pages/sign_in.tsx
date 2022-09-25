@@ -3,6 +3,7 @@ import axios, { AxiosResponse } from "axios"
 import { withIronSessionSsr } from "iron-session/next"
 import { User } from "src/entity/User"
 import { useForm } from "hooks/useForm"
+import qs from "query-string"
 
 type Props = {
   user: User
@@ -18,7 +19,11 @@ const SignIn: NextPage<Props> = props => {
     buttons: <button type="submit">登录</button>,
     submit: {
       request: formData => axios.post(`/api/v1/sessions`, formData),
-      message: "登录成功",
+      success: () => {
+        window.alert("登录成功")
+        const query = qs.parse(window.location.search)
+        window.location.href = query.return_to as string
+      },
     },
   })
 

@@ -10,10 +10,16 @@ const Posts: NextApiHandler = async (req, res) => {
   post.title = title
   post.content = content
   const user = req.session.user
-  post.author = user!
-  const connection = await getDataBaseConnection()
-  await connection.manager.save(post)
-  res.json(post)
+  if (!user) {
+    res.statusCode = 401
+    res.end()
+    return
+  } else {
+    post.author = user
+    const connection = await getDataBaseConnection()
+    await connection.manager.save(post)
+    res.json(post)
+  }
 }
 
 export default withIronSessionApiRoute(Posts, sessionOptions)
