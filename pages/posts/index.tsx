@@ -3,36 +3,32 @@ import { GetServerSideProps, NextPage } from "next"
 import Link from "next/link"
 import { Post } from "src/entity/Post"
 import qs from "query-string"
+import { usePager } from "hooks/usePager"
 
 type Props = {
   posts: Post[]
   count: number
+  perPage: number
   page: number
+  totalPage: number
 }
 
 const PostsIndex: NextPage<Props> = props => {
-  const { posts, count, page } = props
-
+  const { posts, count, page, totalPage } = props
+  const { pager } = usePager({ page, totalPage })
   return (
     <div>
-      <h1>文章列表 {count}</h1>
-      {posts.map(p => (
-        <div key={p.id}>
-          <Link href={`/posts/${p.id}`}>
-            <a>{p.title}</a>
+      <h1>
+        文章列表({props.count}) 每页{props.perPage}
+      </h1>
+      {posts.map(post => (
+        <div key={post.id}>
+          <Link href={`/posts/${post.id}`}>
+            <a>{post.title}</a>
           </Link>
         </div>
       ))}
-      <footer>
-        共 {count} 篇文章，当前是第 {page} 页
-        <Link href={`?page=${props.page - 1}`}>
-          <a>上一页</a>
-        </Link>
-        |
-        <Link href={`?page=${props.page + 1}`}>
-          <a>下一页</a>
-        </Link>
-      </footer>
+      <footer>{pager}</footer>
     </div>
   )
 }
@@ -57,6 +53,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
       posts: JSON.parse(JSON.stringify(posts)),
       count,
       page,
+      totalPage: Math.ceil(count / perPage),
     },
   }
 }
